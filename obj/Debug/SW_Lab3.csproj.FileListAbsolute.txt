@@ -82,3 +82,11 @@ C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\obj\Debug\SW_Lab3.cspr
 C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\obj\Debug\SW_Lab3.csproj.Up2Date
 C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\obj\Debug\SW_Lab3.exe
 C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\obj\Debug\SW_Lab3.pdb
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.abstractions.dll
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.assert.dll
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.core.dll
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.execution.desktop.dll
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.abstractions.xml
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.assert.xml
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.core.xml
+C:\Users\sl1v1\OneDrive\Documents\Projects\CSharp\SW_Lab3\bin\Debug\xunit.execution.desktop.xml

@@ -2,6 +2,8 @@
 
 class Client
 {
+    private static IMusicService _musicService;
+    
     private static void Main(string[] args)
     {
         Console.WriteLine("                                                                      ");
@@ -15,55 +17,73 @@ class Client
         Console.WriteLine("                                                                      ");
         Console.WriteLine("Welcome to MusicPedia");
         
-        Search();
+        StartMusicService(new DbpediaMusicService());
     }
 
-    private static void Search()
+    // Метод який запускає сервіс для пошуку даних
+    private static void StartMusicService(IMusicService musicService)
     {
-        var genres = (MusicGenres[]) Enum.GetValues(typeof(MusicGenres));
-        for (var i = 0; i < genres.Length; i++)
-        {
-            Console.WriteLine($"{i + 1}: {genres[i]}");
-        }
+        _musicService = musicService;
         
-        Console.WriteLine("Please chose & type genre:");
-        var choice = Console.ReadLine();
-        var dbpediaMusicService = new DbpediaMusicService();
-
-        if (int.TryParse(choice, out var result) && result > genres.Length)
+        while (true)
         {
-            Console.WriteLine("Incorrect input");
-        }
-        else
-        {
-            var artists = dbpediaMusicService.GetArtistsByGenre(genres[result - 1]);
-
-            Console.WriteLine("\nArtists:");
-            for (var i = 0; i < artists.Count; i++)
+            var genres = (MusicGenres[]) Enum.GetValues(typeof(MusicGenres));
+            for (var i = 0; i < genres.Length; i++)
             {
-                Console.WriteLine($"{i + 1}: {artists[i].Name}, (Genres: {string.Join(", ", artists[i].Genres)})");
+                Console.WriteLine($"{i + 1}: {genres[i]}");
             }
-            Console.WriteLine($"Type 'Q' to back");
-            
-            Console.WriteLine("Please chose artist for more:");
-            choice = Console.ReadLine();
-
-            if (choice is "Q" or "q")
+        
+            Console.WriteLine("Please choose genre (Enter 0 to exit):");
+            var choice = Console.ReadLine();
+            if (choice is "0")
             {
-                Console.Clear();
-                Search();
+                Environment.Exit(0);
             }
-            else
+
+            if (int.TryParse(choice, out var result) && result <= genres.Length && result > 0)
             {
-                if (int.TryParse(choice, out result) && result > artists.Count)
+                var artists = _musicService.GetArtistsByGenre(genres[result - 1]);
+                Console.WriteLine("\nArtists:");
+                for (var i = 0; i < artists.Count; i++)
                 {
-                    Console.WriteLine("Incorrect input");
+                    Console.WriteLine($"{i + 1}: {artists[i].Name}, (Genres: {string.Join(", ", artists[i].Genres)})");
                 }
-                else
+
+                Console.WriteLine("Choose artist for more information (Enter 0 to go back, Q to quit):");
+                choice = Console.ReadLine();
+                if (choice is "0")
+                {
+                    Console.Clear();
+                }
+                else if (choice is "Q" or "q")
+                {
+                    Environment.Exit(0);
+                }
+
+                if (int.TryParse(choice, out result) && result <= artists.Count && result > 0)
                 {
                     var info = artists[result - 1].Info;
                     Console.WriteLine("About artist: " + info);
+                    Console.WriteLine(string.Empty);
+                    Console.WriteLine("Press 0 to go back, Q to quit");
+                    choice = Console.ReadLine();
+                    if (choice is "0")
+                    {
+                        Console.Clear();
+                    }
+                    else if (choice is "Q" or "q")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
             }
         }
     }

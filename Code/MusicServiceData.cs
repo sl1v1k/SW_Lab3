@@ -9,6 +9,7 @@ public enum MusicGenres
     Electronic = 4
 }
 
+// Клас дати для пошуку жанрів та піджанрів
 public static class MusicServiceData
 {
     public static List<string> GetSubGenresByGenre(MusicGenres musicGenre)

@@ -1,6 +1,4 @@
-﻿/// <summary>
-/// Модель виконавця.
-/// </summary>
+﻿// Клас дата виконавця
 public class Artist
 {
     public string Name { get; set; }

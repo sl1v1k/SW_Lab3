@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-/// <summary>
-/// Сервіс для роботи з даними про музику.
-/// </summary>
+// Клас для роботи з даними про музику
 public class DbpediaMusicService : IMusicService
 {
     private readonly SparqlClient _sparqlClient;
@@ -12,11 +10,8 @@ public class DbpediaMusicService : IMusicService
     {
         _sparqlClient = new SparqlClient("https://dbpedia.org/sparql");
     }
-
-    /// <summary>
-    /// Отримує список українських виконавців.
-    /// </summary>
-    /// <returns>Список виконавців.</returns>
+    
+    // Метод який повертає список українських виконавців за жанром
     public List<Artist> GetArtistsByGenre(MusicGenres musicGenreType, int limit = 100)
     {
         var genres = MusicServiceData.GetSubGenresByGenre(musicGenreType);
