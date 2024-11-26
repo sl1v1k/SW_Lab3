@@ -1,7 +1,7 @@
 ﻿using System;
 using VDS.RDF.Query;
 
-// Клієнт для виконання SPARQL-запитів.
+// Клієнт для виконання SPARQL запитів
 public class SparqlClient
 {
     private readonly string _endpointUrl;
@@ -11,7 +11,7 @@ public class SparqlClient
         _endpointUrl = endpointUrl;
     }
     
-    // Виконує SPARQL-запит і повертає результати
+    // Виконання SPARQL запиту
     public SparqlResultSet ExecuteQuery(string query)
     {
         var endpoint = new SparqlRemoteEndpoint(new Uri(_endpointUrl));

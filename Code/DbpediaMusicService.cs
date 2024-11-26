@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-// Клас для роботи з даними про музику
+// Клас для роботи з даними Dbpedia
 public class DbpediaMusicService : IMusicService
 {
     private SparqlClient _sparqlClient;
@@ -22,6 +22,7 @@ public class DbpediaMusicService : IMusicService
             sb.AppendLine($"                    dbr:{genre}");
         }
         
+        // SPARQL запит
         var query = $@"
                 SELECT DISTINCT ?artist ?artistLabel (GROUP_CONCAT(DISTINCT ?genreLabel; separator=', ') AS ?genres) ?abstract
                 WHERE {{
@@ -40,9 +41,11 @@ public class DbpediaMusicService : IMusicService
                 GROUP BY ?artist ?artistLabel ?genreLabel ?abstract
                 LIMIT {limit}";
         
+        // Відправка запиту
         var results = SparqlClient.ExecuteQuery(query);
         var artists = new List<Artist>();
 
+        // Парсинг даних
         foreach (var result in results)
         {
             var name = result["artistLabel"].ToString().Split('@')[0].Trim('"');;
@@ -52,6 +55,7 @@ public class DbpediaMusicService : IMusicService
             artists.Add(new Artist(name, genre, info));
         }
 
+        // Отримуємо список артистів
         return artists;
     }
 }

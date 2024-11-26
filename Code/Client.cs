@@ -2,6 +2,7 @@
 
 class Client
 {
+    // Cтартова точка програми
     private static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -38,8 +39,10 @@ class Client
                 Environment.Exit(0);
             }
 
+            // Перевірка на валідні вхідні дані
             if (int.TryParse(choice, out var result) && result <= genres.Length && result > 0)
             {
+                // Запит на пошук
                 var artists = musicService.GetArtistsByGenre(genres[result - 1]);
                 Console.WriteLine("\nArtists:");
                 for (var i = 0; i < artists.Count; i++)

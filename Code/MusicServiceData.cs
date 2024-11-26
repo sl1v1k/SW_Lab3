@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+// Структура жанрів
 public enum MusicGenres
 {
     Pop = 0,
