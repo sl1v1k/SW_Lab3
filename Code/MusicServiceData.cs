@@ -55,8 +55,8 @@ public static class MusicServiceData
     {
         return
         [
-            "Rock", "Ukrainian_rock", "Rock_music", "Punk_rock", "Dub_music", "Latin_rock", "Folk_rock", "Gypsy_punk",
-            "Pop_punk", "Pop_rock", "Glam_rock", "Art_pop", "Post-punk", "New_wave_music", "Blues_rock", "Acid_rock",
+            "Rock", "Ukrainian_rock", "Rock_music", "Punk_rock", "Dub_music", "Folk_rock", "Gypsy_punk",
+            "Pop_punk", "Pop_rock", "Glam_rock", "Art_pop", "Post-punk", "New_wave_music", "Blues_rock",
             "Psychedelic_rock", "Experimental_rock", "Post-punk"
         ];
     }

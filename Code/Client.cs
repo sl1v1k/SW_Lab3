@@ -2,10 +2,10 @@
 
 class Client
 {
-    private static IMusicService _musicService;
-    
     private static void Main(string[] args)
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        
         Console.WriteLine("                                                                      ");
         Console.WriteLine("   __  __                 _          _____               _   _         ");
         Console.WriteLine(" |  \\/  |               (_)        |  __ \\             | | (_)        ");
@@ -23,8 +23,6 @@ class Client
     // Метод який запускає сервіс для пошуку даних
     private static void StartMusicService(IMusicService musicService)
     {
-        _musicService = musicService;
-        
         while (true)
         {
             var genres = (MusicGenres[]) Enum.GetValues(typeof(MusicGenres));
@@ -42,7 +40,7 @@ class Client
 
             if (int.TryParse(choice, out var result) && result <= genres.Length && result > 0)
             {
-                var artists = _musicService.GetArtistsByGenre(genres[result - 1]);
+                var artists = musicService.GetArtistsByGenre(genres[result - 1]);
                 Console.WriteLine("\nArtists:");
                 for (var i = 0; i < artists.Count; i++)
                 {

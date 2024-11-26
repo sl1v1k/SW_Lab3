@@ -4,13 +4,14 @@ using System.Text;
 // Клас для роботи з даними про музику
 public class DbpediaMusicService : IMusicService
 {
-    private readonly SparqlClient _sparqlClient;
-
-    public DbpediaMusicService()
-    {
-        _sparqlClient = new SparqlClient("https://dbpedia.org/sparql");
-    }
+    private SparqlClient _sparqlClient;
     
+    public SparqlClient SparqlClient
+    {
+        get => _sparqlClient ??= new SparqlClient("https://dbpedia.org/sparql");
+        set => _sparqlClient = value;
+    }
+
     // Метод який повертає список українських виконавців за жанром
     public List<Artist> GetArtistsByGenre(MusicGenres musicGenreType, int limit = 100)
     {
@@ -39,7 +40,7 @@ public class DbpediaMusicService : IMusicService
                 GROUP BY ?artist ?artistLabel ?genreLabel ?abstract
                 LIMIT {limit}";
         
-        var results = _sparqlClient.ExecuteQuery(query);
+        var results = SparqlClient.ExecuteQuery(query);
         var artists = new List<Artist>();
 
         foreach (var result in results)
